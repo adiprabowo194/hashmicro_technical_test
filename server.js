@@ -27,12 +27,12 @@ app.use(
 app.use(methodOverride("_method"));
 
 app.use(session({
-    secret: process.env.SESSION_SECRET, // Ganti dengan string bebas
-    resave: false,             // Menghemat memori, hanya simpan jika ada perubahan
-    saveUninitialized: false,  // JANGAN simpan session kosong (PENTING untuk login)
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
     cookie: {
-        secure: false,         // Set ke TRUE hanya jika Anda pakai HTTPS (SSL)
-        maxAge: 1000 * 60 * 60 * 24 // Expired dalam 1 hari
+        secure: false,
+        maxAge: 1000 * 60 * 60 * 24
     }
 }));
 app.use((req, res, next) => {

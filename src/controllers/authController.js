@@ -10,6 +10,7 @@ exports.loginPage =
 exports.postLogin = async (req, res) => {
     try {
         const { email, password } = req.body;
+        const totalUser = await User.countDocuments();
         const user = await User.findOne({ email });
         if (!user) {
             return res.render("auth/login", {

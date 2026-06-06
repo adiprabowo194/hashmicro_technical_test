@@ -2,17 +2,25 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
     try {
-        const conn = mongoose.connection.once("open", () => {
-            console.log("MongoDB connected");
-        }).once("error", (error) => {
-            console.log(error);
-            process.exit(1);
-        })
+        const conn = await mongoose.connect(
+            process.env.DB_URI,
+            {
+                dbName: "hashmicro_technicalTest"
+            }
+        );
 
-        await mongoose.connect(process.env.DB_URI);
+        console.log(
+            "Database:",
+            conn.connection.db.databaseName
+        );
+
+        console.log(
+            "MongoDB Connected:",
+            conn.connection.host
+        );
+
     } catch (error) {
-        console.log("Database connection failed", error);
-
+        console.error(error);
         process.exit(1);
     }
 };
