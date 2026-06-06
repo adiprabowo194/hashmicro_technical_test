@@ -8,17 +8,6 @@ const connectDB = async () => {
                 dbName: "hashmicro_technicalTest"
             }
         );
-
-        console.log(
-            "Database:",
-            conn.connection.db.databaseName
-        );
-
-        console.log(
-            "MongoDB Connected:",
-            conn.connection.host
-        );
-
     } catch (error) {
         console.error(error);
         process.exit(1);
